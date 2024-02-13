@@ -2,7 +2,7 @@ const hero = document.querySelector(".hero");
 const text = document.querySelector("h1");
 const walk = 500; // 500px
 
-function shadow(e) {
+function shadow(e, blurAmount) {
   const { offsetWidth: width, offsetHeight: height } = hero;
   let { offsetX: x, offsetY: y } = e;
 
@@ -17,8 +17,9 @@ function shadow(e) {
   ${xWalk}px ${yWalk}px 0 rgba(169, 28, 115, 0.7),
       ${xWalk * -1}px ${yWalk}px 0 rgba(255, 67, 5, 0.7),
       ${yWalk}px ${xWalk * -1}px 0 rgba(14, 72, 222, 0.7),
-      ${yWalk * -1}px ${xWalk}px 0 rgba(107, 232, 87, 0.7)
+      ${yWalk * -1}px ${xWalk}px 0 rgba(107, 232, 87, 0.7),
+      ${xWalk}px ${yWalk}px ${blurAmount}px rgba(0,0,0, 0.3)
   `;
 }
 
-hero.addEventListener("mousemove", shadow);
+hero.addEventListener("mousemove", (e) => shadow(e, 20));
